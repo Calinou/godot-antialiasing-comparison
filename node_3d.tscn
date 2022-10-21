@@ -241,12 +241,13 @@ data = ExtResource("12_wsnu3")
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="SubViewport" type="SubViewport" parent="NoAASubViewportContainer"]
+[node name="NoAASubViewport" type="SubViewport" parent="NoAASubViewportContainer"]
+unique_name_in_owner = true
 handle_input_locally = false
 size = Vector2i(348, 348)
 render_target_update_mode = 4
 
-[node name="Camera3d" type="Camera3D" parent="NoAASubViewportContainer/SubViewport"]
+[node name="Camera3d" type="Camera3D" parent="NoAASubViewportContainer/NoAASubViewport"]
 transform = Transform3D(0.951057, 0.14745, -0.271569, 0, 0.878817, 0.477159, 0.309017, -0.453805, 0.835805, -2.01818, 3.43013, 10.1749)
 fov = 62.0
 
@@ -255,17 +256,18 @@ offset_left = 350.0
 offset_right = 698.0
 offset_bottom = 348.0
 
-[node name="SubViewport" type="SubViewport" parent="AASubViewportContainer"]
+[node name="AASubViewport" type="SubViewport" parent="AASubViewportContainer"]
 unique_name_in_owner = true
 handle_input_locally = false
 size = Vector2i(348, 348)
 render_target_update_mode = 4
 
-[node name="Camera3d" type="Camera3D" parent="AASubViewportContainer/SubViewport"]
+[node name="Camera3d" type="Camera3D" parent="AASubViewportContainer/AASubViewport"]
 transform = Transform3D(0.951057, 0.14745, -0.271569, 0, 0.878817, 0.477159, 0.309017, -0.453805, 0.835805, -2.01818, 3.43013, 10.1749)
 fov = 62.0
 
 [node name="NoAALabel" type="Label" parent="."]
+unique_name_in_owner = true
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -277,6 +279,7 @@ offset_right = -1.0
 offset_bottom = -32.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 0.501961, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 12
 theme_override_fonts/font = ExtResource("13_e7ytk")
