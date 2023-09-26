@@ -244,6 +244,9 @@ offset_bottom = 40.0
 [node name="NoAASubViewport" type="SubViewport" parent="NoAASubViewportContainer"]
 unique_name_in_owner = true
 handle_input_locally = false
+scaling_3d_mode = 0
+scaling_3d_scale = 1.0
+texture_mipmap_bias = 2.0
 size = Vector2i(348, 348)
 render_target_update_mode = 4
 
@@ -259,6 +262,9 @@ offset_bottom = 348.0
 [node name="AASubViewport" type="SubViewport" parent="AASubViewportContainer"]
 unique_name_in_owner = true
 handle_input_locally = false
+scaling_3d_mode = 0
+scaling_3d_scale = 1.0
+texture_mipmap_bias = 2.0
 size = Vector2i(348, 348)
 render_target_update_mode = 4
 

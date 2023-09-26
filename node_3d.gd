@@ -17,6 +17,13 @@ func _ready() -> void:
 	await RenderingServer.frame_post_draw
 	get_viewport().get_texture().get_image().save_png("user://tutorials/3d/img/resolution_scaling_fsr1_0.5.png")
 
+	%AASubViewport.scaling_3d_mode = Viewport.SCALING_3D_MODE_FSR2
+	%AALabel.text = "FSR2 Scale 0.5"
+	for i in 30:
+		# Wait for FSR2's temporal antialiasing to fully converge.
+		await RenderingServer.frame_post_draw
+	get_viewport().get_texture().get_image().save_png("user://tutorials/3d/img/resolution_scaling_fsr2_0.5.png")
+
 	%NoAASubViewport.msaa_3d = Viewport.MSAA_4X
 	%NoAALabel.text = "Scale 1.0 (Native)\n4× MSAA"
 	%AASubViewport.scaling_3d_mode = Viewport.SCALING_3D_MODE_BILINEAR
@@ -29,6 +36,13 @@ func _ready() -> void:
 	%AALabel.text = "FSR1 Scale 0.5\n4× MSAA"
 	await RenderingServer.frame_post_draw
 	get_viewport().get_texture().get_image().save_png("user://tutorials/3d/img/resolution_scaling_fsr1_msaa_4x_0.5.png")
+
+	%AASubViewport.scaling_3d_mode = Viewport.SCALING_3D_MODE_FSR2
+	%AALabel.text = "FSR2 Scale 0.5\n4× MSAA"
+	for i in 30:
+		# Wait for FSR2's temporal antialiasing to fully converge.
+		await RenderingServer.frame_post_draw
+	get_viewport().get_texture().get_image().save_png("user://tutorials/3d/img/resolution_scaling_fsr2_msaa_4x_0.5.png")
 
 	%NoAASubViewport.msaa_3d = Viewport.MSAA_DISABLED
 	%NoAALabel.text = "No antialiasing"
@@ -65,6 +79,14 @@ func _ready() -> void:
 		await RenderingServer.frame_post_draw
 	get_viewport().get_texture().get_image().save_png("user://tutorials/3d/img/antialiasing_taa.png")
 	%AASubViewport.use_taa = false
+
+	%AASubViewport.scaling_3d_mode = Viewport.SCALING_3D_MODE_FSR2
+	%AALabel.text = "FSR2 Native"
+	for i in 30:
+		# Wait for FSR2's temporal antialiasing to fully converge.
+		await RenderingServer.frame_post_draw
+	get_viewport().get_texture().get_image().save_png("user://tutorials/3d/img/antialiasing_fsr2_native.png")
+	%AASubViewport.scaling_3d_mode = Viewport.SCALING_3D_MODE_BILINEAR
 
 	%AASubViewport.scaling_3d_scale = 1.5
 	%AALabel.text = "2.25× SSAA"
