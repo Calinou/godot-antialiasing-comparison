@@ -19,8 +19,8 @@ func _ready() -> void:
 
 	%AASubViewport.scaling_3d_mode = Viewport.SCALING_3D_MODE_FSR2
 	%AALabel.text = "FSR2 Scale 0.5"
-	for i in 30:
-		# Wait for FSR2's temporal antialiasing to fully converge.
+	for i in 32:
+		# Wait for FSR2's temporal antialiasing to fully converge (32 frames in Performance mode).
 		await RenderingServer.frame_post_draw
 	get_viewport().get_texture().get_image().save_png("user://tutorials/3d/img/resolution_scaling_fsr2_0.5.png")
 
@@ -39,8 +39,8 @@ func _ready() -> void:
 
 	%AASubViewport.scaling_3d_mode = Viewport.SCALING_3D_MODE_FSR2
 	%AALabel.text = "FSR2 Scale 0.5\n4× MSAA"
-	for i in 30:
-		# Wait for FSR2's temporal antialiasing to fully converge.
+	for i in 32:
+		# Wait for FSR2's temporal antialiasing to fully converge (32 frames in Performance mode).
 		await RenderingServer.frame_post_draw
 	get_viewport().get_texture().get_image().save_png("user://tutorials/3d/img/resolution_scaling_fsr2_msaa_4x_0.5.png")
 
@@ -81,12 +81,15 @@ func _ready() -> void:
 	%AASubViewport.use_taa = false
 
 	%AASubViewport.scaling_3d_mode = Viewport.SCALING_3D_MODE_FSR2
+	# Disable FSR2 sharpening for a fairer comparison with native TAA.
+	%AASubViewport.fsr_sharpness = 2.0
 	%AALabel.text = "FSR2 Native"
 	for i in 30:
 		# Wait for FSR2's temporal antialiasing to fully converge.
 		await RenderingServer.frame_post_draw
 	get_viewport().get_texture().get_image().save_png("user://tutorials/3d/img/antialiasing_fsr2_native.png")
 	%AASubViewport.scaling_3d_mode = Viewport.SCALING_3D_MODE_BILINEAR
+	%AASubViewport.fsr_sharpness = 0.2
 
 	%AASubViewport.scaling_3d_scale = 1.5
 	%AALabel.text = "2.25× SSAA"
